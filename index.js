@@ -38,7 +38,7 @@ const filterMetroData = (data) => {
 
 const writeToDatabase = async (data) => {
     const [rows] = await pool.default.query(
-        'INSERT INTO metro (c_trains, b_trains, a_trains) VALUES (?, ?, ?)',
+        'INSERT INTO metro (c_trains, b_trains, a_trains, datetime) VALUES (?, ?, ?, UTC_TIMESTAMP)',
         [data["C"], data["B"], data["A"]]
     );
 
