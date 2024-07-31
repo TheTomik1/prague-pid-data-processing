@@ -8,6 +8,9 @@ Using this API, this script is able to pull the data.
 ## Notice
 I am not affiliated with PID in any way, and I am not responsible for any misuse of their API!
 
+Warning! The `INTERVAL_MINUTES` variable in the .env file is the time in minutes between each fetch.
+Please use PID’s API responsibly and do not overload their servers.
+
 I was unable to find any information whether one can use the API for personal use and grab the data externally.
 The API does not have any kind of authentication or rate limiting by my knowledge. If the PID wishes me to take down this repository, please contact me at [my email](mailto:tomset111@gmail.com).
 I am absolute willing to cooperate, and I will respect the decision. Thank you.
@@ -20,7 +23,7 @@ I am absolute willing to cooperate, and I will respect the decision. Thank you.
 - [ ] Ferries
 - [ ] Trolleybuses
 
-* More vehicles might be added in the future.
+* Support for more vehicles might be added in the future.
 
 ## Installation
 1. Clone the repository
@@ -40,9 +43,6 @@ create table metro
     a_trains int not null
 );
 ```
-
-Warning! The `INTERVAL_MINUTES` variable is the time in minutes between each fetch.
-Please use PID’s API responsibly and do not overload their servers.
 
 ## What can I do with this?
 Well, you can use external tools such as [Grafana](https://grafana.com/) to visualize the data.
