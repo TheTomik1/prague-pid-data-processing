@@ -1,5 +1,8 @@
 const axios = require('axios');
 const pool = require('./db-connection');
+require('dotenv').config({ path: './.env' });
+
+const interval_minutes = process.env.INTERVAL_MINUTES;
 
 const gatherPidData = async () => {
     try {
@@ -38,7 +41,7 @@ const filterMetroData = (data) => {
 
 const writeToDatabase = async (data) => {
     const [rows] = await pool.default.query(
-        'INSERT INTO metro (c_trains, b_trains, a_trains, datetime) VALUES (?, ?, ?, UTC_TIMESTAMP)',
+        'INSERT INTO metro (c_trains, b_trains, a_trains, fetch_datetime) VALUES (?, ?, ?, UTC_TIMESTAMP)',
         [data["C"], data["B"], data["A"]]
     );
 
@@ -50,4 +53,4 @@ setInterval(async () => {
     const metroData = filterMetroData(pidData);
 
     await writeToDatabase(metroData);
-}, 60000 * 5); // 5 minutes
+}, 60000 * interval_minutes);
